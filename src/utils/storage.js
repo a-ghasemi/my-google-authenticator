@@ -1,3 +1,24 @@
+const isExtensionEnvironment = typeof browser !== 'undefined';
+const browserMock = {
+    storage: {
+        local: {
+            get: async (key) => {
+                // Mock implementation or return from local storage
+                return Promise.resolve({ [key]: localStorage.getItem(key) });
+            },
+            set: async (data) => {
+                // Mock implementation or save to local storage
+                Object.keys(data).forEach(key => {
+                    localStorage.setItem(key, data[key]);
+                });
+                return Promise.resolve();
+            }
+        }
+    }
+};
+
+const browser = isExtensionEnvironment ? window.browser : browserMock;
+
 export const saveGenerator = async (generator) => {
     const generators = await getGenerators();
     generators.push(generator);
