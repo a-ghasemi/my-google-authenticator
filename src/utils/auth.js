@@ -1,10 +1,9 @@
-import { totp } from 'otplib';
+import { jsSHA } from 'jssha';
 
-// Initialize otplib with specific options if needed
-totp.options = { /* ... */ };
-
-export const generateCode = (secret) => {
-    return totp.generate(secret);
-};
-
-// You can add more authentication-related functions here
+export function generateTOTP(secret, window = 30) {
+    const epoch = Math.round(new Date().getTime() / 1000.0);
+    const time = leftPad(Math.floor(epoch / window).toString(16), 16, '0');
+    // use the Web Crypto API to create an HMAC-SHA1 hash of 'time' using 'secret'
+    // extract the TOTP code from the hash
+    // return the code
+}

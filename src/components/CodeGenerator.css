@@ -1,0 +1,33 @@
+.code-generator {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.drag-handle {
+    cursor: grab;
+    margin-right: 10px;
+}
+
+.ttl-indicator {
+    height: 5px;
+    background-color: blue;
+    transition: width 1s linear;
+}
+
+.ttl-indicator.last-quarter {
+    background-color: red;
+}
+
+.generated-code {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.generated-code.last-quarter {
+    color: red;
+}
+
+.delete-button {
+    /* Your styling for delete button */
+}
